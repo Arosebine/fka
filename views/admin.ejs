@@ -1,0 +1,65 @@
+
+    <%- include('./partials/header1.ejs') %>
+
+
+
+            <!-- row -->
+            <div class="row tm-content-row tm-mt-big">
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <div class="row">
+                            <div class="col-8">
+                                <h2 class="tm-block-title d-inline-block">Latest Testimonies List</h2>
+
+                            </div>
+                            <div class="col-4 text-right">
+                                <a href="/products" class="tm-link-black">View All</a>
+                            </div>
+                        </div>
+                        <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
+                            <% data.forEach(ayo => { %>
+                             
+                            <li class="tm-list-group-item">
+                                <%= ayo.topic %> 
+                            </li>
+                        <% }) %>
+                        </ol>
+                    </div>
+                </div>
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Calendar</h2>
+                        <div id="calendar"></div>
+                        <div class="row mt-4">
+                            <div class="col-12 text-right">
+                                <a href="https://calendar.google.com/calendar/u/0/r?pli=1" class="tm-link-black">View Schedules</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tm-col tm-col-small">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Church Programmes</h2>
+                        <ol class="tm-list-group">
+                            <li class="tm-list-group-item">Victory Celebration</li>
+                            <li class="tm-list-group-item">Prophetic Declaration</li>
+                            <li class="tm-list-group-item">Shiloh Encounter</li>
+                            <li class="tm-list-group-item">Single and Married Programmes</li>
+                            
+                            <li class="tm-list-group-item">National Youth Convention and Anniversry</li>
+                            <li class="tm-list-group-item">Men Anniversry</li>
+                            <li class="tm-list-group-item">Women Anniversry</li>
+                            <li class="tm-list-group-item">Pastorate Anniversry</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+    <%- include('./partials/footer1.ejs') %>
+        </div>
+    </div>
+    
+    <%- include('./partials/script1.ejs') %> 
+</body>
+</html>
