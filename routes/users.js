@@ -4,6 +4,7 @@ const fs = require('file-system');
 const { adminSignUp, adminLogin } = require('../controllers/user.admin');
 const { addBlog, adminBlog, updateBlog, } = require('../controllers/user.blog');
 const upload = require('../utils/multer');
+const Model = require('../models/blog');
 
 
 
@@ -20,14 +21,27 @@ router.post('/add',upload.single("file"), addBlog );
 router.get('/find', adminBlog );
 router.put('/update', updateBlog );
 
-/*
 
+
+/* GET contact page. */
+// router.get('/admin', function(req, res, next) {
+//     res.render('admin', {});
+//   });
+
+  
 
 
 /* GET contact page. */
 router.get('/admin', function(req, res, next) {
-    res.render('admin', {});
-  });
+  const userTesty = Model.find({})
+      .sort({ createdAt: -1 })
+      .skip(0)
+      .limit(8)
+      .exec((err, result)=>{
+  if(result)
+  res.render('admin', {data: result });
+});
+});
 
 
 
