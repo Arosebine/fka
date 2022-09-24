@@ -5,20 +5,10 @@ const multer  = require('multer')
 const fs = require('file-system');
 const imageUpload = require('../utils/photo');
 const Model = require('../models/blog');
+const Contact = require('../models/email-sender');
 
 
 const { adminSignUp } = require('../controllers/user.admin');
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, 'public')
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now())
-//   }
-// })
- 
-// const upload = multer({ storage: storage })
 
 
 /* GET home page. */
@@ -44,8 +34,31 @@ router.get('/about', function(req, res, next) {
 
 /* GET blog page. */
 router.get('/blog', function(req, res, next) {
-  res.render('blog', {});
+  const userTesty = Model.find({})
+      .sort({ createdAt: -1 })
+      .skip(0)
+      .limit(6)
+      .exec((err, result)=>{
+  if(result)
+  res.render('blog', {data: result });
 });
+});
+
+
+router.get('/blog-detail', function(req, res, next) {
+   const userTesty = Model.find({})
+      .sort({ createdAt: -1 })
+      .skip(0)
+      .limit(4)
+      .exec((err, result)=>{
+  if(result)
+  res.render('blog-detail', {data: result });
+});
+});
+
+
+
+
 
 
 
@@ -56,31 +69,9 @@ router.get('/service', function(req, res, next) {
 
 
 // /* GET single page. */
-// router.get('/single', function(req, res, next) {
-//   res.render('single', { title: 'EagleHouse'});
-// });
-
-
-// /* GET picture page. */
-// router.get('/picture', function(req, res, next) {
-//   res.render('picture', { title: 'EagleHouse'});
-// });
-
- 
-// // For Single image upload
-// router.post('/upload', imageUpload.single('./images/img'), (req, res) => {
-//   const img = fs.readFileSync(req.file.path);
-//   const encode_image = img.toString('base64');
-//   // Define a JSONobject for the image attributes for saving to database
-
-//   const finalImg = {
-//       contentType: req.file.mimetype,
-//       image: Buffer.from(encode_image, 'base64')
-//   };
-//   res.send(req.file)
-// }, (error, req, res, next) => {
-//   res.render('picture', { error: error.message })
-// });
+router.get('/single', function(req, res, next) {
+  res.render('single', { title: 'EagleHouse'});
+});
 
 
 
@@ -99,6 +90,8 @@ router.get('/accounts', function(req, res, next) {
 
 
 
+
+
 /* GET contact page. */
 router.get('/admin', function(req, res, next) {
   const userTesty = Model.find({})
@@ -107,9 +100,11 @@ router.get('/admin', function(req, res, next) {
       .limit(8)
       .exec((err, result)=>{
   if(result)
+   
   res.render('admin', {data: result });
 });
 });
+
 
 
 
@@ -155,13 +150,6 @@ const userTesty = Model.find({})
   
 });
 
-// For multiple image upload
-
-// router.post('/uploadBulkImage', imageUpload.array('images', 4),     (req, res) => {
-//   res.send(req.files)
-// }, (error, req, res, next) => {
-//    res.status(400).send({ error: error.message })
-// })
 
 
 

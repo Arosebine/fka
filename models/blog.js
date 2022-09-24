@@ -26,7 +26,7 @@ const blogSchema = new mongoose.Schema({
     },
 
 
-    video: {
+    date: {
         type: String,
     },
 

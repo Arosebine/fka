@@ -5,9 +5,7 @@ const { adminSignUp, adminLogin } = require('../controllers/user.admin');
 const { addBlog, adminBlog, updateBlog, } = require('../controllers/user.blog');
 const upload = require('../utils/multer');
 const Model = require('../models/blog');
-
-
-
+const { contactEmail } = require('../controllers/contact.controller');
 
 const router = express.Router();
 
@@ -20,13 +18,9 @@ router.post('/login', adminLogin );
 router.post('/add',upload.single("file"), addBlog );
 router.get('/find', adminBlog );
 router.put('/update', updateBlog );
+router.post('/contact', contactEmail);
 
 
-
-/* GET contact page. */
-// router.get('/admin', function(req, res, next) {
-//     res.render('admin', {});
-//   });
 
   
 
@@ -65,6 +59,11 @@ router.get('/accounts', function(req, res, next) {
     res.render('login', {});
   });
   
+
+// /* GET single page. */
+router.get('/single', function(req, res, next) {
+  res.render('single', { title: 'EagleHouse'});
+});
   
     
   
