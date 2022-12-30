@@ -6,7 +6,7 @@ const blogSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "admin",
     },
-    username:{
+    fullname:{
         type: String,
     },
 

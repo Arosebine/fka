@@ -101,7 +101,7 @@ router.get('/admin', function(req, res, next) {
       .exec((err, result)=>{
   if(result)
    
-  res.render('admin', {data: result });
+  res.render('login', {data: result });
 });
 });
 

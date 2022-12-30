@@ -15,7 +15,7 @@ exports.addBlog = async (req, res) => {
 
         
         const {
-            username,
+            fullname,
             topic,
             description,
             date,
@@ -24,7 +24,7 @@ exports.addBlog = async (req, res) => {
             const pic = await cloudinary.uploader.upload(req.file.path);
 
         const admin =await Blog.create({
-            username,
+            fullname,
             topic,
             description,
             picture: pic.secure_url,
