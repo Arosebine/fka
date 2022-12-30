@@ -15,11 +15,8 @@ exports.contactEmail = async (req, res) => {
         message,
     });
     await sendEmail({ 
-         subject:`
-          Hello EagleHouse, I am ${contactInfo.name},
-          Subject:${contactInfo.subject},
-          Email: ${contactInfo.email},
-          Message: ${contactInfo.message}`
+        subject: contactInfo.subject, 
+        message: `I am, ${contactInfo.name}, ${contactInfo.email},<br><br> ${contactInfo.message}` ,
         });
     
     res.send("Message Successfully Sent!");
